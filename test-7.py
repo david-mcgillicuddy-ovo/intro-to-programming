@@ -26,7 +26,7 @@ avgUsage = sum(usages)/len(usages)
 print("Your average usage is " + str(avgUsage))
 
 cost=5
-print("Your cost per unit is " + str(cost))
+print("Your cost per unit is " + str(cost) + "p")
 
 totalCost = cost * totalUsage
-print("total cost is " + str(totalCost) + " pounds")
+print("total cost is " + str(totalCost) + "p")

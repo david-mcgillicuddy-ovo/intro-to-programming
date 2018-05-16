@@ -5,7 +5,7 @@ usage = secondReading - firstReading
 print("Your usage is " + str(usage))
 
 cost=5
-print("Your cost per unit is " + str(cost))
+print("Your cost per unit is " + str(cost) + "p")
 
 totalCost = cost * usage
-print("total cost is " + str(totalCost) + " pounds")
+print("total cost is " + str(totalCost) + "p")

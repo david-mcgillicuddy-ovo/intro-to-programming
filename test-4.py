@@ -8,7 +8,7 @@ if firstReading > secondReading:
 usage = secondReading - firstReading
 
 cost=5
-print("Your cost per unit is " + str(usage))
+print("Your cost per unit is " + str(usage) + "p")
 
 totalCost = cost * usage
-print("total cost is " + str(totalCost) + " pounds")
+print("total cost is " + str(totalCost) + "p")
