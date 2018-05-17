@@ -1,7 +1,22 @@
 import sys
 
-print("Please enter your meter readings")
-readings = [float(number) for number in sys.stdin.readline().split()]
+print("Please enter your meter readings, and press Enter on an empty line when done")
+
+readings = []
+retryErrorMessage = "Please enter a correct reading or press Enter to finish entering readings"
+
+while True:
+    reading = sys.stdin.readline().strip()
+
+    if reading == "":
+        break
+
+    if len(readings) > 0 and float(reading) < readings[-1]:
+        print("This reading is smaller than the last one. " + retryErrorMessage)
+        continue
+
+    readings.append(float(reading))
+
 print("Readings: " + str(readings))
 
 if len(readings) <= 1:
@@ -11,19 +26,32 @@ if len(readings) <= 1:
 totalUsage = readings[-1] - readings[0]
 print("Your total usage is " + str(totalUsage))
 
-usages = [readings[y] - readings[y-1] for y in range(1, len(readings))]
+usages = [readings[y] - readings[y - 1] for y in range(1, len(readings))]
 print("Usages: " + str(usages))
 
-for usage in usages:
-    if usage < 0:
-        print("Error: your usage cannot be negative")
-        quit()
+avgUsage = sum(usages) / len(usages)
+print("Your average usage is " + str(round(avgUsage, 4)))
 
-avgUsage = sum(usages)/len(usages)
-print("Your average usage is " + str(avgUsage))
-
-cost=5
+cost = 0.05
 print("Your cost per unit is " + str(cost) + "p")
 
 totalCost = cost * totalUsage
-print("total cost is " + str(totalCost) + "p")
+costText = ""
+
+if totalCost >= 100:
+    pence = round(totalCost % 100)
+    pounds = int((totalCost - pence) / 100)
+
+    if pence == 100:
+        pounds += 1
+        pence = 0
+
+    costText = str(pounds) + " pounds "
+
+    if pence > 0:
+        costText += str(pence) + " p"
+else:
+    costText = "" + str(totalCost) + " p"
+
+print()
+print("Your total cost is " + costText)
