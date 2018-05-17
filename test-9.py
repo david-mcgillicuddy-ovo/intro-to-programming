@@ -45,6 +45,11 @@ costText = ""
 if totalCost >= 100:
     pence = round(totalCost % 100)
     pounds = int((totalCost - pence) / 100)
+    
+    if pence == 100:
+        pounds += 1
+        pence = 0
+        
     costText = str(pounds) + " pounds "
     
     if pence > 0:
