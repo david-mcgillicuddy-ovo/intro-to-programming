@@ -1,7 +1,7 @@
 import sys
 
 print("Please enter your meter readings")
-readings = map(float, sys.stdin.readline().split())
+readings = [float(number) for number in sys.stdin.readline().split()]
 print("Readings: " + str(readings))
 
 if len(readings) <= 1:
